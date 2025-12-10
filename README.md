@@ -33,7 +33,7 @@ On Linux you would look in /dev/ for the attached usb device name.
 By default, the docker run cmd will output a help message from oec.
 
 ```sh
-docker run --rm oec
+docker run --rm mhardingdk/oec
 ```
 
 Help mesage from oec
@@ -65,13 +65,13 @@ In the below example:
 * Hostname    : www.moshix.tech:2300
 
 ```sh
-docker run --rm --device=/dev/ttyxxx --name ibm3174 oec /dev/ttyxxx tn3270 www.moshix.tech:2300
+docker run --rm --device=/dev/ttyxxx --name ibm3174 mhardingdk/oec /dev/ttyxxx tn3270 www.moshix.tech:2300
 ```
 
 Note: You can start the docker run command detached with -d
 
 ```sh
-docker run -d --rm --device=/dev/ttyxxx --name ibm3174 oec /dev/ttyxxx tn3270 www.moshix.tech:2300
+docker run -d --rm --device=/dev/ttyxxx --name ibm3174 mhardingdk/oec /dev/ttyxxx tn3270 www.moshix.tech:2300
 ```
 
 # Docker Build command
@@ -79,5 +79,5 @@ docker run -d --rm --device=/dev/ttyxxx --name ibm3174 oec /dev/ttyxxx tn3270 ww
 To build the docker container from the dockerfile in this repo.
 
 ```SH
-docker build -t oec .
+docker build -t mhardingdk/oec .
 ```
