@@ -1,17 +1,13 @@
 # Using Python Alpine linux as a base
-FROM golang:alpine3.23
+FROM python:3.15.0a2-alpine3.22
 
 WORKDIR /usr/app
 
 RUN apk --update add git \
-&& git clone https://github.com/racingmars/proxy3270.git \
-&& cd proxy3270 \
-&& go build \
-&& mkdir ./data
+&& git clone https://github.com/lowobservable/oec.git \
+&& pip install --no-cache-dir -r ./oec/requirements.txt
 
-WORKDIR /usr/app/proxy3270
+WORKDIR /usr/app/oec
 
-COPY config.sample.json /usr/app/proxy3270/config.json
-
-ENTRYPOINT ["./proxy3270" ]
-CMD ["-port","3270"]
+ENTRYPOINT ["python", "-m","oec" ]
+CMD ["-h"]
