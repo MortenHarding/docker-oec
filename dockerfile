@@ -1,14 +1,15 @@
 # Using Python Alpine linux as a base
-FROM golang:tip-alpine3.23
+FROM golang:alpine3.23
 
 WORKDIR /usr/app
 
 RUN apk --update add git \
-&& git clone https://github.com/racingmars/proxy3270.git
+&& git clone https://github.com/racingmars/proxy3270.git \
+&& cd proxy3270 \
+&& go build \
+&& mkdir ./data
 
 WORKDIR /usr/app/proxy3270
-RUN go build \
-&& mkdir ./data
 
 COPY config.sample.json /usr/app/proxy3270/config.json
 
